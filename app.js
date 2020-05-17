@@ -488,7 +488,7 @@ initDb(config.databaseConnectionString, async (err, db) => {
         await app.listen(app.get('port'),'0.0.0.0');
         app.emit('appStarted');
         if(process.env.NODE_ENV !== 'test'){
-            console.log(colors.green('expressCart running on host: http://localhost:' + app.get('port')));
+            console.log(colors.green('expressCart running on host: http://0.0.0.0:' + app.get('port')));
         }
     }catch(ex){
         console.error(colors.red('Error starting expressCart app:' + ex.message));
