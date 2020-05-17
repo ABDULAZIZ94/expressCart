@@ -337,7 +337,7 @@ if(!config.secretSession || config.secretSession === ''){
 
 app.enable('trust proxy');
 app.use(helmet());
-app.set('port', process.env.PORT || 1111);
+app.set('port', process.env.PORT || 80);
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(config.secretCookie));
@@ -485,7 +485,7 @@ initDb(config.databaseConnectionString, async (err, db) => {
 
     // Start the app
     try{
-        await app.listen(app.get('port'));
+        await app.listen(app.get('port'),'0.0.0.0');
         app.emit('appStarted');
         if(process.env.NODE_ENV !== 'test'){
             console.log(colors.green('expressCart running on host: http://localhost:' + app.get('port')));
